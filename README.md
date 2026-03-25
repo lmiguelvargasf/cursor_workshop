@@ -1,59 +1,69 @@
-# Cursor workshop
+# Cursor Workshop
 
-**What this is:** One folder with everything for our hands-on **Cursor** workshop—a small website you will change during the sessions, step by step, with help from the facilitator.
+This repository contains the practice project for the workshop.
 
-**What you need to know:** You do not need to be a programmer. Follow the steps below; if something fails, ask for help and we will fix it together.
+You will open it in **Cursor** and make small changes step by step during the session, with support from the facilitator.
+
+You do **not** need to be a programmer to participate.
 
 ## What is Cursor?
 
-**Cursor** is a code editor (similar to VS Code) with built-in AI. You open this project in Cursor, describe what you want in everyday language, and apply suggestions when you choose to—nothing changes on your computer until you save.
+**Cursor** is an editor with built-in AI.
 
-## Before you start (one-time)
+In the workshop, you will use it to open this project, describe changes in simple language, and update the website little by little.
 
-Ask a helper if you are unsure. You need:
+## Before you start
 
-1. **This folder on your computer** — your facilitator will show how (for example with Git, GitHub Desktop, or a ZIP download).
-2. **Node.js** — a free program that runs the practice website. [Download Node.js (LTS)](https://nodejs.org/) if you do not already have it.
+You need:
 
-Helpers who need to check installations can use [setup.md](setup.md).
+1. **This project on your computer**  
+   Your facilitator will show you how to get it.
 
-## Run the practice website
+2. **Node.js installed**  
+   Download it here if you do not already have it: [Node.js (LTS)](https://nodejs.org/)
 
-Open a terminal in **this project’s root folder** (the same folder as `package.json`), then run:
+If you are unsure whether everything is ready, ask a helper.
+
+## Run the project
+
+Open a terminal in the main folder of this project, then run:
 
 ```bash
 npm install
 ```
 
-Then:
+After that, run:
 
 ```bash
 npm run dev
 ```
 
-Open **[http://localhost:3000](http://localhost:3000)** in your browser. When you save a file, the page usually updates on its own.
+Then open:
 
-**Day to day:** after the first `npm install`, you normally only run **`npm run dev`** when you work on the project.
+[http://localhost:3000](http://localhost:3000)
 
----
+When you save changes, the page will usually update automatically.
 
-## Optional: for curious folks
+## The command you will usually use
 
-| | |
-|--|--|
-| **Next.js** | Powers the website (pages and local server). |
-| **React** | Builds the user interface. |
-| **TypeScript** | JavaScript with clearer structure. |
-| **Tailwind CSS** | Styling via short class names in the code. |
+After the first setup, most of the time you will only need:
 
-Other commands some people use later:
+```bash
+npm run dev
+```
 
-| Command | Meaning in plain terms |
-|---------|-------------------------|
-| `npm run build` | Prepare a “final” version of the site. |
-| `npm run start` | View that final version on your machine (after `build`). |
-| `npm run lint` | Check the code for common issues. |
+## Project notes
 
-**Where things live:** the main page is **`app/page.tsx`**; shared styling is **`app/globals.css`**.
+This project uses a few modern web tools:
 
-**Learn more:** [Next.js docs](https://nextjs.org/docs) · [Cursor docs](https://cursor.com/docs)
+* **Next.js** for the website
+* **React** for the interface
+* **TypeScript** for the code structure
+* **Tailwind CSS** for styling
+
+You do not need to understand these tools before the workshop.
+
+## Main files
+
+* `app/page.tsx` → main page
+* `app/globals.css` → shared styles
