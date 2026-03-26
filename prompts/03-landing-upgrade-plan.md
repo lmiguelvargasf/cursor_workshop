@@ -3,6 +3,9 @@ You are an Expert Frontend Developer, UI/UX Designer, and Conversion Copywriter.
 
 Review the current page context and execute the necessary code changes based on the requirements below.
 
+# Skill reference
+Apply **`.agents/skills/frontend-skill/SKILL.md`** (frontend-skill) for art direction and implementation quality. Use its working model (visual thesis, content plan, interaction thesis), landing-page sequence, and “Beautiful Defaults” so the upgrade feels deliberate, premium, and cohesive—not generic card clutter.
+
 # Page Architecture & Sections
 Integrate the new sections with the existing ones, arranging them in the most logical, high-converting top-to-bottom order for a user journey.
 

@@ -3,6 +3,9 @@ Eres un Desarrollador Frontend Experto, Diseñador UI/UX y Copywriter de Convers
 
 Revisa el contexto de la página actual y ejecuta los cambios de código necesarios basándote en los siguientes requisitos.
 
+# Referencia de skill
+Aplica **`.agents/skills/frontend-skill/SKILL.md`** (frontend-skill) para la dirección de arte y la calidad de implementación. Usa su modelo de trabajo (tesis visual, plan de contenido, tesis de interacción), la secuencia recomendada para landings y las “Beautiful Defaults” para que la mejora se sienta deliberada, premium y coherente, no un amontonamiento genérico de tarjetas.
+
 # Arquitectura de la Página y Secciones
 Integra las nuevas secciones con las existentes, organizándolas en el orden lógico de arriba hacia abajo que mejor convierta para el viaje del usuario.
 
