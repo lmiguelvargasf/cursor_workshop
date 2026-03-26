@@ -3,7 +3,7 @@ You are an expert Senior Frontend Engineer and UI/UX Designer. Your task is to b
 
 Below is the core information for the page. Please use this data to populate the text and links.
 
-## Project Data (Fill these out)
+## Project Data
 - **Brand/Name:** [INSERT NAME / BUSINESS NAME]
 - **Type:** [e.g., Personal Portfolio / Tech Startup / Freelance Service]
 - **Main Goal:** [e.g., Generate leads / Showcase projects / Sell a service]
@@ -57,3 +57,7 @@ Build the page with the following 5 modular components in this exact order:
 - **Responsive Design:** The layout must be flawless on mobile (`px-4`, stacked columns) and desktop (`max-w-7xl`, `md:grid-cols-3`).
 - **Clean Code:** Separate sections into their own functional components within a `components/` folder.
 - **Placeholder Copy:** Do NOT use "Lorem Ipsum." Generate realistic, professional placeholder copy based on the "Type" and "Target Audience" provided above.
+
+## 5. Execution Instructions for the AI (CRITICAL)
+- **Zero Assumptions:** If any of the above instructions are ambiguous, if crucial information is missing, or if there are conflicting dependencies, **STOP and ask me the necessary questions** before you begin generating code or planning the structure.
+- Show me the step-by-step plan first and wait for my confirmation before writing any files.

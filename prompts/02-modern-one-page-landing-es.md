@@ -57,3 +57,7 @@ Construye la página con los siguientes 5 componentes modulares en este orden ex
 - **Diseño Responsivo:** El diseño debe ser impecable en móviles (`px-4`, columnas apiladas) y escritorio (`max-w-7xl`, `md:grid-cols-3`).
 - **Código Limpio:** Separa las secciones en sus propios componentes funcionales dentro de una carpeta `components/`.
 - **Texto de Relleno:** NO uses "Lorem Ipsum". Genera texto de relleno realista y profesional basado en el "Tipo" y el "Público Objetivo" proporcionados arriba.
+
+## 5. Instrucciones de Ejecución para la IA (CRÍTICO)
+- **Cero Suposiciones:** Si alguna de las instrucciones anteriores es ambigua, si falta información crucial, o si hay dependencias conflictivas, **DETENTE y hazme las preguntas necesarias** antes de empezar a generar código o planificar la estructura.
+- Muestra el plan paso a paso primero y espera mi confirmación antes de escribir los archivos.
