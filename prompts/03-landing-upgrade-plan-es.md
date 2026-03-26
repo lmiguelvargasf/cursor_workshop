@@ -1,39 +1,26 @@
-Ya tengo una landing page básica con estas secciones:
+# Rol y Objetivo
+Eres un Desarrollador Frontend Experto, Diseñador UI/UX y Copywriter de Conversión. Tu objetivo es rediseñar, mejorar y expandir una landing page existente para convertirla en una experiencia moderna, premium y de alta conversión.
 
-- Hero
-- Acerca de
-- Servicios
-- Llamada a la acción (CTA)
-- Contacto
+Revisa el contexto de la página actual y ejecuta los cambios de código necesarios basándote en los siguientes requisitos.
 
-Revisa primero la página actual y elabora un plan de mejora claro antes de cambiar código.
+# Arquitectura de la Página y Secciones
+Integra las nuevas secciones con las existentes, organizándolas en el orden lógico de arriba hacia abajo que mejor convierta para el viaje del usuario.
 
-Tu objetivo es mejorar la página:
+- **Secciones Existentes a Mejorar:** Hero, Acerca de (About), Servicios, CTA, Contacto
+- **Nuevas Secciones a Construir y Añadir:** Cómo funciona (Proceso), Testimonios / Prueba social, Portafolio / Ejemplos, FAQ, Footer (Pie de página)
 
-- añadiendo estas secciones nuevas:
-  - Cómo funciona
-  - Testimonios / Prueba social
-  - Portafolio / Ejemplos
-  - Preguntas frecuentes (FAQ)
-  - Pie de página (Footer)
-- mejorando la calidad general del diseño
-- mejorando los textos para que la página se sienta más clara, natural y profesional
+# Requisitos de Ejecución
 
-Por favor entrega:
+## 1. Mejoras de UI/UX y Diseño
+- **Auditoría y Corrección:** Corrige al instante las debilidades de diseño actuales, como el mal espaciado, tipografía inconsistente o falta de contraste.
+- **Estética Moderna:** Haz que la página sea limpia, pulida y profesional. Usa un amplio espacio en blanco para que no se sienta amontonada.
+- **Responsividad:** Garantiza diseños impecables tanto para móviles como para escritorio.
+- **Consistencia:** Aplica un sistema de diseño estricto a nivel global (ej. utilidades de espaciado de Tailwind consistentes, paleta de colores unificada y tipografía cohesiva).
 
-1. El orden final recomendado de todas las secciones en la página
-2. Una breve explicación de por qué importa cada sección nueva
-3. Qué contenido debe incluir cada sección
-4. Los componentes de interfaz que deberían crearse para cada sección
-5. Los principales puntos débiles de diseño de la página actual
-6. Los principales puntos débiles de los textos de la página actual
-7. Un plan de implementación paso a paso
-8. Sugerencias de diseño para mantener la página limpia, moderna, cuidada y adaptable a móvil
+## 2. Componentización y Calidad del Código
+- Construye todas las nuevas secciones (y refactoriza las existentes donde sea necesario) como componentes limpios, modulares y reutilizables.
+- Asegúrate de que el código esté limpio, organizado y ubicado en los directorios de componentes correctos.
 
-**Importante:**
-
-- Aún no escribas código
-- No hagas suposiciones innecesarias
-- Usa marcadores de posición cuando falte información
-- Si algo no está claro, hazme preguntas concretas antes de seguir
-- Mantén las recomendaciones prácticas y fáciles de implementar
+## 3. Copywriting y Generación de Contenido
+- **Reescritura de Textos (Copy):** Mejora el texto existente para que sea más claro, natural y altamente persuasivo. Haz que el copy se centre en los beneficios en lugar de solo en las características.
+- **Placeholders Inteligentes (Crucial):** Para todas las secciones nuevas, genera de manera inteligente contenido de relleno (placeholder) realista y profesional basado en el contexto del proyecto. **NO uses "Lorem Ipsum"** y NO te detengas a pedir los datos que faltan; simplemente genera textos realistas que puedan ser editados más tarde.

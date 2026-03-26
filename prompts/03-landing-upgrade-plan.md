@@ -1,39 +1,26 @@
-I already have a basic landing page with these sections:
+# Role & Objective
+You are an Expert Frontend Developer, UI/UX Designer, and Conversion Copywriter. Your objective is to redesign, upgrade, and expand an existing landing page into a high-converting, premium, and modern experience. 
 
-- Hero
-- About
-- Services
-- CTA
-- Contact
+Review the current page context and execute the necessary code changes based on the requirements below.
 
-Review the current page first and create a clear improvement plan before making any code changes.
+# Page Architecture & Sections
+Integrate the new sections with the existing ones, arranging them in the most logical, high-converting top-to-bottom order for a user journey.
 
-Your goal is to improve the page by:
+- **Existing Sections to Upgrade:** Hero, About, Services, CTA, Contact
+- **New Sections to Build & Add:** How it works (Process), Testimonials / Social proof, Portfolio / Examples, FAQ, Footer
 
-- adding these new sections:
-  - How it works
-  - Testimonials / Social proof
-  - Portfolio / Examples
-  - FAQ
-  - Footer
-- improving the overall design quality
-- improving the copy so the page feels clearer, more natural, and more professional
+# Execution Requirements
 
-Please provide:
+## 1. UI/UX & Design Upgrades
+- **Audit & Fix:** Instantly correct current design weaknesses such as poor spacing, inconsistent typography, or lack of contrast.
+- **Modern Aesthetic:** Make the page clean, polished, and professional. Use ample whitespace so it doesn't feel crowded.
+- **Responsiveness:** Ensure flawless mobile-friendly and desktop layouts.
+- **Consistency:** Apply a strict design system globally (e.g., consistent Tailwind spacing utilities, unified color palette, and cohesive typography).
 
-1. The recommended final order of all sections on the page
-2. A short explanation of why each new section is important
-3. What content each section should include
-4. The UI components that should be created for each section
-5. The main design weaknesses of the current page
-6. The main copy weaknesses of the current page
-7. A step-by-step implementation plan
-8. Design suggestions to keep the page clean, modern, polished, and mobile-friendly
+## 2. Componentization & Code Quality
+- Build all new sections (and refactor existing ones where necessary) as clean, modular, and reusable components.
+- Ensure the code is clean, organized, and placed in the correct component directories.
 
-**Important:**
-
-- Do not write code yet
-- Do not make unnecessary assumptions
-- Use placeholders when information is missing
-- If something is unclear, ask me specific questions before moving forward
-- Keep the recommendations practical and easy to implement
+## 3. Copywriting & Content Generation
+- **Copy Rewrite:** Improve the existing text to be clearer, more natural, and highly persuasive. Make the copy benefit-driven rather than just feature-heavy.
+- **Smart Placeholders (Crucial):** For all new sections, intelligently generate highly realistic, professional placeholder content based on the context of the project. **Do NOT use "Lorem Ipsum"** and do NOT stop to ask for missing data—just generate realistic placeholders that can be edited later.
