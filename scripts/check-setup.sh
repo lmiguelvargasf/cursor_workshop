@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
-# Checks Node.js and Git for this workshop. Works on macOS, Linux, and Windows (Git Bash).
-# Optional: bash scripts/check-setup.sh --install  (tries winget on Windows, Homebrew on macOS)
+# Checks Node.js (v24.x) and Git for this workshop. Works on macOS, Linux, and Windows (Git Bash).
+# Optional: bash scripts/check-setup.sh --install
+#   Unix: nvm + Node 24. Windows: fnm + Node 24; Git via winget (Windows) / Homebrew (macOS, if present).
 
 set -u
 
+NVM_VERSION="0.40.4"
+NODE_NVM_MAJOR="24"
+WINGET_FNM="Schniz.fnm"
+
 NODEJS_URL="https://nodejs.org/en/download/"
 GIT_WINDOWS_URL="https://git-scm.com/download/win"
-WINGET_NODE="OpenJS.NodeJS.LTS"
 WINGET_GIT="Git.Git"
 
 say() { printf '%s\n' "$*"; }
@@ -24,8 +28,16 @@ for a in "$@"; do [[ "$a" == "--install" ]] && INSTALL=true; done
 
 have() { command -v "$1" >/dev/null 2>&1; }
 
-node_ver() { have node && node --version 2>/dev/null | head -n1 || true; }
-git_ver() { have git && git --version 2>/dev/null | head -n1 || true; }
+node_ver() { have node && node --version 2>/dev/null | head -n1 | tr -d '\r\n' || true; }
+git_ver() { have git && git --version 2>/dev/null | head -n1 | tr -d '\r' || true; }
+
+sync_node_ok() {
+  nv="$(node_ver)"
+  if [[ -z "$nv" ]]; then node_ok=false; return; fi
+  local maj="${nv#v}"
+  maj="${maj%%.*}"
+  [[ "$maj" == "$NODE_NVM_MAJOR" ]] && node_ok=true || node_ok=false
+}
 
 try_winget() {
   # Git Bash often does not put WindowsApps on PATH; try several wrappers Windows ships with.
@@ -63,37 +75,110 @@ try_winget() {
   return 1
 }
 
-nv="$(node_ver)"
+try_unix_nvm_node() {
+  export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+  local nvm_sh="$NVM_DIR/nvm.sh"
+  if [[ ! -s "$nvm_sh" ]]; then
+    say "Installing nvm v${NVM_VERSION}..."
+    curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/v${NVM_VERSION}/install.sh" | bash || return 1
+  fi
+  if [[ ! -s "$nvm_sh" ]]; then
+    return 1
+  fi
+  # shellcheck source=/dev/null
+  . "$nvm_sh"
+  say "Installing Node.js ${NODE_NVM_MAJOR} via nvm..."
+  nvm install "${NODE_NVM_MAJOR}" || return 1
+  nvm alias default "${NODE_NVM_MAJOR}" >/dev/null 2>&1 || true
+  nvm use default >/dev/null 2>&1 || nvm use "${NODE_NVM_MAJOR}" >/dev/null 2>&1 || true
+  return 0
+}
+
+try_windows_fnm_node() {
+  local fnm_bin=""
+
+  resolve_fnm() {
+    fnm_bin=""
+    if have fnm; then fnm_bin="$(command -v fnm)"; return 0; fi
+    if have fnm.exe; then fnm_bin="$(command -v fnm.exe)"; return 0; fi
+    return 1
+  }
+
+  if ! resolve_fnm; then
+    say "Installing fnm via winget..."
+    try_winget "$WINGET_FNM" || return 1
+    hash -r 2>/dev/null || true
+  fi
+  if ! resolve_fnm; then
+    return 1
+  fi
+
+  # shellcheck disable=SC2091
+  eval "$("$fnm_bin" env --use-on-cd --shell bash)"
+  say "Installing Node.js ${NODE_NVM_MAJOR} via fnm..."
+  "$fnm_bin" install "${NODE_NVM_MAJOR}" || return 1
+  "$fnm_bin" default "${NODE_NVM_MAJOR}" 2>/dev/null || true
+  # shellcheck disable=SC2091
+  eval "$("$fnm_bin" env --use-on-cd --shell bash)"
+  return 0
+}
+
+nv=""
+node_ok=false
+sync_node_ok
 gv="$(git_ver)"
-[[ -n "$nv" ]] && node_ok=true || node_ok=false
 [[ -n "$gv" ]] && git_ok=true || git_ok=false
 
 if $INSTALL && [[ "$os" == "Windows" ]]; then
   winget_tried=false
-  if ! $node_ok; then try_winget "$WINGET_NODE" || true; winget_tried=true; fi
+  if ! $node_ok; then
+    try_windows_fnm_node || true
+    winget_tried=true
+    sync_node_ok
+  fi
   if ! $git_ok; then try_winget "$WINGET_GIT" || true; winget_tried=true; fi
-  nv="$(node_ver)"; gv="$(git_ver)"
-  [[ -n "$nv" ]] && node_ok=true || node_ok=false
+  sync_node_ok
+  gv="$(git_ver)"
   [[ -n "$gv" ]] && git_ok=true || git_ok=false
-  if $winget_tried; then say "If winget installed anything, open a new terminal and run this script again."; fi
+  if $winget_tried; then say "If winget or fnm installed anything, open a new terminal and run this script again."; fi
 fi
 
-if $INSTALL && [[ "$os" == "macOS" ]] && have brew && { ! $node_ok || ! $git_ok; }; then
-  brew install node git || true
-  nv="$(node_ver)"; gv="$(git_ver)"
-  [[ -n "$nv" ]] && node_ok=true || node_ok=false
-  [[ -n "$gv" ]] && git_ok=true || git_ok=false
-  say "If Homebrew just installed something, you may need a new terminal window."
+if $INSTALL && [[ "$os" == "macOS" ]]; then
+  if ! $node_ok; then
+    try_unix_nvm_node || true
+    sync_node_ok
+    if $node_ok; then
+      say "If nvm or Node were just installed, open a new terminal or run:  . \"\$HOME/.nvm/nvm.sh\""
+    fi
+  fi
+  if ! $git_ok && have brew; then
+    brew install git || true
+    gv="$(git_ver)"
+    [[ -n "$gv" ]] && git_ok=true || git_ok=false
+    say "If Homebrew just installed Git, you may need a new terminal window."
+  fi
 fi
 
 if $INSTALL && [[ "$os" == "Linux" ]]; then
-  say "On Linux, install packages with your distro (see below); this script does not run apt/dnf for you."
+  if ! $node_ok; then
+    try_unix_nvm_node || true
+    sync_node_ok
+    if $node_ok; then
+      say "If nvm or Node were just installed, open a new terminal or run:  . \"\$HOME/.nvm/nvm.sh\""
+    fi
+  fi
 fi
 
 say ""
-say "Workshop setup check — detected: $os"
+say "Workshop setup check — detected: $os (Node.js v${NODE_NVM_MAJOR}.x required)"
 say ""
-if $node_ok; then say "  Node.js: OK — $nv"; else say "  Node.js: not found"; fi
+if [[ -z "$nv" ]]; then
+  say "  Node.js: not found"
+elif $node_ok; then
+  say "  Node.js: OK — $nv"
+else
+  say "  Node.js: wrong version — $nv (need v${NODE_NVM_MAJOR}.x)"
+fi
 if $git_ok; then say "  Git:     OK — $gv"; else say "  Git:     not found"; fi
 say ""
 
@@ -117,11 +202,14 @@ if ! $git_ok; then
 fi
 
 if ! $node_ok; then
-  say "Node.js (LTS): $NODEJS_URL"
-  if [[ "$os" == "macOS" ]]; then say "      or:  brew install node"; fi
-  if [[ "$os" == "Linux" ]]; then say "      or:  sudo apt install -y nodejs npm  (or nvm / a newer Node from $NODEJS_URL)"; fi
+  say "Node.js v${NODE_NVM_MAJOR}.x: $NODEJS_URL"
+  if [[ "$os" == "macOS" || "$os" == "Linux" ]]; then
+    say "      nvm:  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v${NVM_VERSION}/install.sh | bash"
+    say "            . \"\$HOME/.nvm/nvm.sh\"  &&  nvm install ${NODE_NVM_MAJOR}"
+  fi
   if [[ "$os" == "Windows" ]]; then
-    say "      or:  winget install --id $WINGET_NODE -e --accept-source-agreements --accept-package-agreements"
+    say "      fnm:  winget install $WINGET_FNM"
+    say "            eval \"\$(fnm env --use-on-cd --shell bash)\"  &&  fnm install ${NODE_NVM_MAJOR}  &&  fnm default ${NODE_NVM_MAJOR}"
   fi
 fi
 
