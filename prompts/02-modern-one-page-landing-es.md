@@ -1,70 +1,59 @@
-Construye una landing page moderna de una sola página para **[NOMBRE DE PERSONA / NEGOCIO / PROYECTO]**.
+# Contexto
+Eres un Ingeniero Frontend Senior experto y Diseñador UI/UX. Tu tarea es construir una landing page de una sola página, moderna y de alta conversión, usando **React (Next.js App Router)** y **Tailwind CSS**. 
 
-## Personalización
-Usa la siguiente información en toda la página:
+A continuación se encuentra la información central de la página. Por favor, usa estos datos para completar el texto y los enlaces.
 
-- **Nombre o marca:** [TU NOMBRE / NOMBRE DEL NEGOCIO]
-- **Tipo:** [marca personal / negocio / proyecto]
-- **Objetivo principal de la página:** [conseguir clientes / mostrar portafolio / explicar el proyecto / recibir contacto]
-- **Público principal:** [para quién es esta página]
-- **Llamada a la acción principal:** [agendar una llamada / contáctame / comprar ahora / saber más]
-- **Correo:** [tu correo]
-- **WhatsApp:** [tu número de WhatsApp]
-- **Enlaces sociales:** [Instagram / LinkedIn / X / sitio web]
+## Datos del Proyecto (Completa esto)
+- **Marca/Nombre:** [INSERTA NOMBRE / NOMBRE DEL NEGOCIO]
+- **Tipo:** [ej., Portafolio Personal / Startup Tecnológica / Servicio Freelance]
+- **Objetivo Principal:** [ej., Generar leads / Mostrar proyectos / Vender un servicio]
+- **Público Objetivo:** [ej., Fundadores Tech / Negocios Locales / Reclutadores]
+- **CTA Principal:** [ej., Agendar una Llamada / Ver mi Trabajo / Contáctame]
+- **Email:** [INSERTA TU EMAIL]
+- **WhatsApp:** [INSERTA TU WHATSAPP O ELIMINA ESTO]
+- **Enlaces Sociales:** [INSERTA LINKEDIN / X / INSTAGRAM]
 
-## Dirección de diseño
-Haz que la página sea:
-- moderna
-- limpia
-- profesional
-- amable
-- adaptable a móvil
-- visualmente atractiva
+---
 
-Usa:
-- un diseño actual
-- buen espaciado
-- tipografía clara
-- colores simples pero agradables
-- detalles sutiles que se sientan cuidados
-- un diseño que no esté recargado
+## 1. Arquitectura y Estado Global
+En lugar de escribir los datos de forma rígida (hardcode) en los componentes, **primero crea un archivo `constants/content.ts`**. 
+Almacena todos los datos del proyecto, textos y enlaces en este archivo. Cada componente debe importar su texto y enlaces desde este objeto de configuración para que pueda actualizar mi sitio fácilmente más adelante en un solo lugar. Agrega comentarios como `// ACTUALIZA TU INFO AQUÍ`.
 
-## Secciones
-Crea estas 5 secciones en este orden:
+## 2. Stack Tecnológico y Sistema de Diseño
+- **Framework:** Next.js (App Router) y Tailwind CSS.
+- **Íconos:** Usa `lucide-react`.
+- **Animaciones:** Usa `framer-motion` para animaciones de entrada sutiles (ej., fade up al hacer scroll).
+- **Tipografía:** Sans-serif moderna y limpia (Inter, Geist o similar).
+- **Estética:** Limpia, con mucho espacio en blanco, estilo "SaaS" o "Portafolio Premium". Usa una paleta de colores refinada (grises/zinc sutiles para fondos, y un color de alto contraste para los botones principales). 
 
-### 1. Hero
-Incluye:
-- un titular contundente para **[NOMBRE DE PERSONA / NEGOCIO / PROYECTO]**
-- un subtítulo breve
-- un botón principal
-- una composición visual atractiva
+## 3. Requisitos de las Secciones
+Construye la página con los siguientes 5 componentes modulares en este orden exacto:
 
-### 2. Acerca de
-Incluye:
-- una breve introducción que explique quién soy yo o qué es el negocio/proyecto
-- texto simple, claro y fácil de leer
+### 1. Encabezado y Navegación (Header)
+- Encabezado fijo (sticky) con efecto glassmorphism (`backdrop-blur`).
+- Lado izquierdo: Marca/Nombre.
+- Lado derecho: Botón de CTA principal.
 
-### 3. Servicios / Beneficios
-Incluye:
-- 3 tarjetas o columnas
-- cada una debe explicar un servicio, beneficio o función clave
+### 2. Sección Hero
+- Titular `H1` grande e impactante (usa un degradado sutil en palabras clave).
+- Un subtítulo persuasivo que explique la propuesta de valor.
+- Dos botones: CTA Principal (fondo sólido, efecto de escala al pasar el cursor) y un CTA Secundario (contorno o fantasma).
+- Asegúrate de que el diseño esté visualmente equilibrado, ya sea centrado o en pantalla dividida.
 
-### 4. Llamada a la acción
-Incluye:
-- una invitación clara a dar el siguiente paso
-- un botón fuerte con texto orientado a la acción
+### 3. Acerca de / Misión
+- Una sección simple y limpia que explique quién soy o qué hace el proyecto.
+- Evita los muros de texto. Usa un diseño de dos columnas o un bloque de texto estrecho y muy legible.
 
-### 5. Contacto
-Incluye:
-- correo
-- WhatsApp
-- enlaces sociales
-- una maqueta sencilla que facilite comunicarse
+### 4. Servicios / Cuadrícula de Valor
+- Una cuadrícula de tarjetas o estilo "Bento-box" de 3 columnas.
+- Cada tarjeta debe incluir: un ícono de `lucide-react`, un título en negrita y una breve descripción del beneficio/servicio.
+- Agrega un resaltado de borde sutil o un efecto de elevación al pasar el cursor (hover).
 
-## Requisitos técnicos
-- Haz el diseño adaptable para escritorio y móvil
-- Usa componentes reutilizables
-- Mantén el código limpio y ordenado
-- Usa texto de ejemplo realista que pueda editar después
-- Haz que todo el contenido personalizado sea fácil de localizar y sustituir
-- Añade comentarios en el código indicando dónde actualizar mi nombre, textos, enlaces e información de contacto
+### 5. CTA Final y Pie de Página (Footer)
+- Una franja de alto contraste (ej., fondo oscuro) para romper el scroll y dar un último empuje hacia el CTA Principal.
+- Un pie de página limpio que contenga: Email, enlace de WhatsApp, Íconos Sociales y un aviso de copyright.
+
+## 4. Reglas Técnicas
+- **Diseño Responsivo:** El diseño debe ser impecable en móviles (`px-4`, columnas apiladas) y escritorio (`max-w-7xl`, `md:grid-cols-3`).
+- **Código Limpio:** Separa las secciones en sus propios componentes funcionales dentro de una carpeta `components/`.
+- **Texto de Relleno:** NO uses "Lorem Ipsum". Genera texto de relleno realista y profesional basado en el "Tipo" y el "Público Objetivo" proporcionados arriba.
