@@ -1,61 +1,57 @@
-# Desafío: de tu página de inicio a un sitio web de verdad
+# Desafío: deja tu landing lista para compartir
 
-Ya tienes una página de inicio. Ahora el desafío es ampliarla hasta un sitio web pequeño con varias páginas.
+Ya construiste y mejoraste una landing page de una sola página durante el workshop.
+
+Este desafío es distinto: haz una pasada de pulido para que el sitio se sienta listo para mostrar.
 
 ## Tu misión
 
-Piensa qué necesita tu sitio a continuación y redacta **tu propio prompt** para el agente de programación.
+Usa el agente de código para mejorar la landing page que ya tienes.
 
-El agente debe mejorar tu proyecto haciendo todo lo siguiente:
+Este es un **desafío pequeño de implementación**. **No** es un rediseño completo ni un sitio de varias páginas.
 
-- Añadir una sección de **testimonios** en la página de inicio
-- Crear una página **Acerca de** (o **Sobre mí**, si el sitio es personal)
-- Crear una página de **Servicios**  
-  - Si tu sitio es personal o tipo portafolio, puedes crear en su lugar una página de **Proyectos**
-- Actualizar la navegación para que los visitantes puedan moverse entre páginas
-- Mantener el mismo estilo de diseño en todo el sitio
-- Mejorar los textos para que el sitio se sienta claro, natural y profesional
+Pídele al agente que haga todo lo siguiente:
 
-## Qué debe tener tu sitio al final
+- Haz que todos los CTA principales funcionen
+  - Los botones deben llevar a una sección real o abrir un enlace real como email, WhatsApp, Calendly o un perfil social
+- Mejora la navegación y la experiencia móvil
+  - Los links del header deben apuntar a secciones reales y el layout debe sentirse limpio en pantallas pequeñas
+- Añade metadatos listos para producción
+  - Define un título y una descripción claros en `app/layout.tsx`
+- Corrige los detalles finales
+  - Mejora la estructura semántica, los textos alternativos, los estados de foco y cualquier problema claro de espaciado o contraste
 
-El resultado debería incluir:
+## Restricciones importantes
 
-- Una página de inicio con una nueva sección de **testimonios**
-- **2 páginas adicionales**
-- Un **menú de navegación** que funcione
-- Un **pie de página**
-- Un diseño limpio y adaptable a distintos tamaños de pantalla
-- Colores, espaciado, tipografía y botones coherentes en todo el sitio
-- Mejor redacción y mensajes en todas las páginas
+- Mantente en **una sola página**
+- **No** agregues páginas nuevas
+- **No** rehagas todo el diseño
+- **No** agregues secciones grandes como **Testimonios**, **Preguntas frecuentes**, **Portafolio** ni un sitio completo de varias páginas
+- Conserva el estilo visual actual y mejora lo que ya existe
 
-## Qué debes hacer
+## Cómo se ve un buen resultado
 
-**No** implementes esto programando tú mismo a mano.
+Al final, tu sitio debería tener:
 
-**No** copies el prompt de otra persona.
+- Navegación y CTA funcionando
+- Una mejor experiencia en móvil
+- Metadatos reales para la pestaña del navegador y la descripción de la página
+- Mejor accesibilidad y acabado visual
+- La misma marca y dirección visual, pero más clara y más completa
 
-En su lugar, escribe **tu propio prompt**, claro y concreto, para el agente.
+## Cómo abordarlo
 
-Tu prompt debe explicar:
+Escribe **un prompt corto** para el agente.
 
-- qué tiene que construir el agente
-- qué páginas hay que crear
-- qué hay que añadir en la página de inicio
-- cómo debe funcionar la navegación
-- cómo debe transmitirse el diseño
-- cómo quieres que mejoren los textos
+Tu prompt debe dejar claro que esto es una **pasada de pulido para dejar la landing lista** y que debe:
 
-## Importante
+- mantenerse en una sola página
+- arreglar navegación y comportamiento de los CTA
+- añadir metadatos
+- mejorar accesibilidad y detalles finales
+- preservar el estilo actual del diseño
 
-Toma las decisiones en función de **tu propio sitio**.
-
-Pregúntate:
-
-- ¿Para quién es este sitio?
-- ¿Qué deben entender primero los visitantes?
-- ¿Qué páginas encajan mejor con esta marca, negocio o proyecto personal?
-- ¿Qué tono debe tener el sitio?
-- ¿Qué le haría sentir más real y completo?
+Luego ejecútalo, revisa el resultado y haz **un ajuste extra** si hace falta.
 
 ## Tiempo
 
@@ -63,12 +59,10 @@ Tienes entre **15 y 20 minutos**.
 
 ## Objetivo
 
-Al terminar este desafío, tu proyecto debe sentirse como un sitio web de verdad, no solo como una única página de inicio.
+Dejar una landing page que se sienta lista para mostrarle hoy mismo a otra persona.
 
-## Desafío extra
+## Si terminas antes
 
-Si terminas antes, también puedes pedirle al agente que:
-
-- añada una sección de **preguntas frecuentes**
-- mejore el **pie de página**
-- deje la sección de **testimonios** más cuidada, con nombres, cargos y fotos
+- Mejora el favicon o la imagen de vista previa social
+- Añade una animación sutil que encaje con el estilo actual
+- Mejora el copy de **una** sección sin reescribir toda la página

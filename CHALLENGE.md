@@ -1,61 +1,57 @@
-# Challenge: Turn your landing page into a real website
+# Challenge: Make your landing page launch-ready
 
-You already have a homepage. Now your challenge is to expand it into a small multi-page website.
+You already built and upgraded a one-page landing page during the workshop.
+
+This challenge is different: do a focused polish pass so the site feels ready to share.
 
 ## Your mission
 
-Think about what your website needs next, then write **your own prompt** for the coding agent.
+Use the coding agent to improve the landing page you already have.
 
-The agent should improve your project by doing all of the following:
+This is a **small implementation challenge**. It is **not** a full redesign and **not** a multi-page build.
 
-- Add a **Testimonials** section to the homepage
-- Create an **About** page
-- Create a **Services** page  
-  - If your site is personal or portfolio-based, you can create a **Projects** page instead
-- Update the navigation so visitors can move between pages
-- Keep the design style consistent across the whole website
-- Improve the writing so the website feels clear, natural, and professional
+Ask the agent to do all of the following:
 
-## What your final website should have
+- Make every main CTA work
+  - Buttons should scroll to a real section or open a real link such as email, WhatsApp, Calendly, or a social profile
+- Improve navigation and mobile usability
+  - Header links should point to real sections and the layout should feel clean on smaller screens
+- Add launch-ready metadata
+  - Set a clear page title and description in `app/layout.tsx`
+- Fix the finishing details
+  - Improve semantic structure, alt text, focus states, and any obvious spacing or contrast issues
 
-Your result should include:
+## Important constraints
 
-- A homepage with a new **Testimonials** section
-- **2 additional pages**
-- A working **navigation menu**
-- A **footer**
-- A clean and responsive design
-- Consistent colors, spacing, typography, and buttons
-- Better text and messaging across the website
+- Stay on **one page only**
+- Do **not** add new pages
+- Do **not** rebuild the whole design
+- Do **not** add big new sections like **Testimonials**, **FAQ**, **Portfolio**, or a full multi-page website
+- Keep the current visual style and improve what already exists
 
-## What you need to do
+## What “done” looks like
 
-Do **not** code this manually.
+By the end, your site should have:
 
-Do **not** copy a prompt from someone else.
+- Working navigation and CTA links
+- A better mobile experience
+- Real metadata for the browser tab and page description
+- Better accessibility and polish
+- The same brand and visual direction, just clearer and more complete
 
-Instead, write your **own clear prompt** for the agent.
+## How to approach it
 
-Your prompt should explain:
+Write **one short prompt** for the agent.
 
-- what the agent needs to build
-- which pages need to be created
-- what should be added to the homepage
-- how navigation should work
-- how the design should feel
-- how the text should be improved
+Your prompt should clearly say that this is a **launch-readiness polish pass** and that it must:
 
-## Important
+- stay on one page
+- fix navigation and CTA behavior
+- add metadata
+- improve accessibility and finishing details
+- preserve the current design style
 
-Make decisions based on **your own website**.
-
-Ask yourself:
-
-- Who is this website for?
-- What should visitors understand first?
-- What pages make the most sense for this brand, business, or personal site?
-- What kind of tone should the website have?
-- What would make it feel more real and complete?
+Then run the prompt, review the result, and make **one follow-up fix** if needed.
 
 ## Time
 
@@ -63,12 +59,10 @@ You have **15 to 20 minutes**.
 
 ## Goal
 
-By the end of this challenge, your project should feel like a real website, not just a single landing page.
+Ship a landing page that feels ready to show someone today.
 
-## Extra challenge
+## If you finish early
 
-If you finish early, you can also ask the agent to:
-
-- add an **FAQ** section
-- improve the **footer**
-- make the **Testimonials** section more polished with names, roles, and photos
+- Improve the favicon or social preview image
+- Add a subtle animation that matches the current style
+- Tighten the copy in **one** section without rewriting the whole page
