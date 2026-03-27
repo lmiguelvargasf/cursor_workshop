@@ -94,34 +94,64 @@ try_unix_nvm_node() {
   return 0
 }
 
+# Sets FNM_BIN to the fnm executable (used on Windows with fnm / fnm.exe).
+windows_resolve_fnm_bin() {
+  FNM_BIN=""
+  if have fnm; then FNM_BIN="$(command -v fnm)"; return 0; fi
+  if have fnm.exe; then FNM_BIN="$(command -v fnm.exe)"; return 0; fi
+  return 1
+}
+
+# Load fnm into this script's environment so node/npm are on PATH (Git Bash).
+try_windows_fnm_env() {
+  [[ "$os" == "Windows" ]] || return 0
+  hash -r 2>/dev/null || true
+  windows_resolve_fnm_bin || return 1
+  # shellcheck disable=SC2091
+  eval "$("$FNM_BIN" env --use-on-cd --shell bash)"
+  return 0
+}
+
+# Add fnm hook to ~/.bashrc once so new Git Bash windows get node/npm without manual eval.
+ensure_fnm_bashrc_windows() {
+  [[ "$os" == "Windows" ]] || return 0
+  local brc="${HOME}/.bashrc"
+  local marker="# cursor_workshop: fnm (Node.js PATH - leave this)"
+  if [[ -f "$brc" ]] && grep -qF "$marker" "$brc" 2>/dev/null; then
+    return 0
+  fi
+  windows_resolve_fnm_bin || return 0
+  {
+    printf '\n%s\n' "$marker"
+    printf '%s\n' 'eval "$(fnm env --use-on-cd --shell bash)"'
+  } >> "$brc"
+  say "Configured Git Bash to load Node automatically (added one block to ~/.bashrc)."
+  return 0
+}
+
 try_windows_fnm_node() {
-  local fnm_bin=""
-
-  resolve_fnm() {
-    fnm_bin=""
-    if have fnm; then fnm_bin="$(command -v fnm)"; return 0; fi
-    if have fnm.exe; then fnm_bin="$(command -v fnm.exe)"; return 0; fi
-    return 1
-  }
-
-  if ! resolve_fnm; then
+  if ! windows_resolve_fnm_bin; then
     say "Installing fnm via winget..."
     try_winget "$WINGET_FNM" || return 1
     hash -r 2>/dev/null || true
   fi
-  if ! resolve_fnm; then
+  if ! windows_resolve_fnm_bin; then
     return 1
   fi
 
   # shellcheck disable=SC2091
-  eval "$("$fnm_bin" env --use-on-cd --shell bash)"
+  eval "$("$FNM_BIN" env --use-on-cd --shell bash)"
   say "Installing Node.js ${NODE_NVM_MAJOR} via fnm..."
-  "$fnm_bin" install "${NODE_NVM_MAJOR}" || return 1
-  "$fnm_bin" default "${NODE_NVM_MAJOR}" 2>/dev/null || true
+  "$FNM_BIN" install "${NODE_NVM_MAJOR}" || return 1
+  "$FNM_BIN" default "${NODE_NVM_MAJOR}" 2>/dev/null || true
   # shellcheck disable=SC2091
-  eval "$("$fnm_bin" env --use-on-cd --shell bash)"
+  eval "$("$FNM_BIN" env --use-on-cd --shell bash)"
   return 0
 }
+
+if [[ "$os" == "Windows" ]]; then
+  try_windows_fnm_env || true
+fi
 
 nv=""
 node_ok=false
@@ -140,7 +170,10 @@ if $INSTALL && [[ "$os" == "Windows" ]]; then
   sync_node_ok
   gv="$(git_ver)"
   [[ -n "$gv" ]] && git_ok=true || git_ok=false
-  if $winget_tried; then say "If winget or fnm installed anything, open a new terminal and run this script again."; fi
+  if $winget_tried; then
+    say "If tools were just installed: close this Git Bash window and open a new one before running npm (same folder is fine)."
+    say "Your account was updated so Node loads automatically in new Git Bash windows."
+  fi
 fi
 
 if $INSTALL && [[ "$os" == "macOS" ]]; then
@@ -166,6 +199,14 @@ if $INSTALL && [[ "$os" == "Linux" ]]; then
     if $node_ok; then
       say "If nvm or Node were just installed, open a new terminal or run:  . \"\$HOME/.nvm/nvm.sh\""
     fi
+  fi
+fi
+
+if [[ "$os" == "Windows" ]]; then
+  try_windows_fnm_env || true
+  sync_node_ok
+  if $node_ok && windows_resolve_fnm_bin; then
+    ensure_fnm_bashrc_windows || true
   fi
 fi
 
