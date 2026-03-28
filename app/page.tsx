@@ -1,4 +1,14 @@
-import Image from "next/image";
+import { About } from "@/components/About";
+import { ContactSection } from "@/components/ContactSection";
+import { CtaSection } from "@/components/CtaSection";
+import { Faq } from "@/components/Faq";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { Portfolio } from "@/components/Portfolio";
+import { Process } from "@/components/Process";
+import { Services } from "@/components/Services";
+import { Testimonials } from "@/components/Testimonials";
 
 export default function Home() {
   return (
@@ -16,44 +26,21 @@ export default function Home() {
         aria-hidden
       />
 
-      <section
-        aria-labelledby="welcome-title"
-        className="relative z-10 mx-auto flex min-h-dvh max-w-lg flex-col items-center justify-center px-6 py-16 sm:px-8"
-      >
-        <div className="motion-hero-media w-full max-w-[280px] sm:max-w-[320px]">
-          <div className="relative aspect-square overflow-hidden rounded-2xl shadow-[0_24px_80px_-12px_rgba(0,0,0,0.65)] ring-1 ring-white/10">
-            <Image
-              src="/hero-quito.png"
-              alt=""
-              fill
-              priority
-              unoptimized
-              sizes="(max-width: 640px) 280px, 320px"
-              className="object-cover object-center"
-            />
-          </div>
-        </div>
-
-        <div className="motion-hero-content mt-10 w-full text-center sm:mt-12">
-          <h1
-            id="welcome-title"
-            className="font-syne text-2xl font-semibold leading-snug tracking-tight text-zinc-50 sm:text-3xl"
-            aria-label="Bienvenida o bienvenido a Cursor Quito"
-          >
-            <span aria-hidden className="mr-1.5 inline-block">
-              ✨
-            </span>
-            Bienvenid@ a Cursor Quito
-          </h1>
-          <p className="motion-hero-cta mt-5 text-base leading-relaxed text-zinc-400 sm:text-lg">
-            En unos minutos empezaremos a crear la página que vas a publicar. No
-            necesitas experiencia previa: aquí aprenderás todo paso a paso.{" "}
-            <span aria-hidden className="inline-block">
-              🚀
-            </span>
-          </p>
-        </div>
-      </section>
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Services />
+          <Process />
+          <Portfolio />
+          <Testimonials />
+          <Faq />
+          <CtaSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }

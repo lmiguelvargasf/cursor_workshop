@@ -18,9 +18,9 @@ const siteUrl =
 
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
-  title: "Cursor Workshop Quito",
+  title: "Mac Mixer | Per-App Volume Control for macOS",
   description:
-    "Taller práctico en Quito: aprende Cursor, crea y publica tu landing page. Presentado por Cursor Community.",
+    "Mac Mixer is an open-source sound mixer widget for macOS that lets you control volume per app, similar to the Windows sound mixer experience.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -37,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="es"
+      lang="en"
       className={`${outfit.variable} ${syne.variable} h-full antialiased`}
     >
       <head>
