@@ -67,7 +67,7 @@ bash scripts/check-setup.sh --install
 
 ## Configure Git (name and email)
 
-Use this so commits show the right **name** and **email** (and GitHub can link commits to an account when the email matches). It runs `git config --global user.name` and `user.email`; pushing to GitHub still needs a one-time sign-in (HTTPS, SSH, or `gh auth login`).
+Use this so commits show the right **name** and **email** (and GitHub can link commits to an account when the email matches). It sets **only** whichever of `git config --global user.name` and `user.email` are **not** already set; if both are already set, it prints them and exits without changing anything. Pushing to GitHub still needs a one-time sign-in (HTTPS, SSH, or `gh auth login`).
 
 **Same folder and terminal rules as above:** `cd` to the **project root** (folder with `package.json`). The script must run under **bash**—**Terminal** on macOS, a normal terminal or **WSL** on Linux, and on Windows **Git Bash** or **WSL** (not plain Command Prompt or PowerShell unless you are inside WSL).
 
@@ -77,4 +77,4 @@ Copy and paste:
 bash scripts/setup-git.sh
 ```
 
-Follow the prompts. If Git is not installed yet, install it first (see the hints printed by `bash scripts/check-setup.sh` or use **Git for Windows** on Windows), then run the command again.
+Follow any prompts (only shown for missing values). If Git is not installed yet, install it first (see the hints printed by `bash scripts/check-setup.sh` or use **Git for Windows** on Windows), then run the command again.

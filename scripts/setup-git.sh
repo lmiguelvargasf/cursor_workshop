@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Interactive Git identity setup for this workshop. Sets global user.name and user.email.
+# Interactive Git identity setup for this workshop. Sets global user.name and/or user.email
+# only when they are not already set (skips prompts and writes when both exist).
 # Run with bash:  bash scripts/setup-git.sh
 # Works on macOS, Linux, and Windows (Git Bash). On Windows, use Git Bash from Git for Windows.
 
@@ -46,6 +47,13 @@ fi
 existing_name="$(git config --global user.name 2>/dev/null || true)"
 existing_email="$(git config --global user.email 2>/dev/null || true)"
 
+if [[ -n "$existing_name" && -n "$existing_email" ]]; then
+  say "Global Git identity is already set. Leaving values unchanged."
+  say "  user.name:  $existing_name"
+  say "  user.email: $existing_email"
+  exit 0
+fi
+
 if [[ -n "$existing_name" || -n "$existing_email" ]]; then
   say "Current global Git identity:"
   [[ -n "$existing_name" ]] && say "  user.name:  $existing_name" || say "  user.name:  (not set)"
@@ -53,39 +61,40 @@ if [[ -n "$existing_name" || -n "$existing_email" ]]; then
   say ""
 fi
 
-say "Enter the name and email you want on every Git commit (GitHub shows these on your activity)."
+set_name=false
+set_email=false
+[[ -z "$existing_name" ]] && set_name=true
+[[ -z "$existing_email" ]] && set_email=true
+
+if $set_name && $set_email; then
+  say "Enter the name and email you want on every Git commit (GitHub shows these on your activity)."
+  say ""
+fi
+
+if $set_name; then
+  read -r -p "Your full name: " name
+  name="$(trim "$name")"
+  if [[ -z "$name" ]]; then
+    say "Error: name cannot be empty."
+    exit 1
+  fi
+  git config --global user.name "$name"
+fi
+
+if $set_email; then
+  read -r -p "Your email (use the one tied to GitHub if you push there): " email
+  email="$(trim "$email")"
+  if [[ -z "$email" ]]; then
+    say "Error: email cannot be empty."
+    exit 1
+  fi
+  if [[ "$email" != *"@"* ]]; then
+    say "Warning: email usually contains @. Continuing anyway."
+  fi
+  git config --global user.email "$email"
+fi
+
 say ""
-
-prompt_name="Your full name"
-[[ -n "$existing_name" ]] && prompt_name="Your full name [press Enter to keep: $existing_name]"
-
-read -r -p "$prompt_name: " name
-name="$(trim "$name")"
-[[ -z "$name" && -n "$existing_name" ]] && name="$existing_name"
-
-prompt_email="Your email (use the one tied to GitHub if you push there)"
-[[ -n "$existing_email" ]] && prompt_email="Your email [press Enter to keep: $existing_email]"
-
-read -r -p "$prompt_email: " email
-email="$(trim "$email")"
-[[ -z "$email" && -n "$existing_email" ]] && email="$existing_email"
-
-if [[ -z "$name" ]]; then
-  say "Error: name cannot be empty."
-  exit 1
-fi
-if [[ -z "$email" ]]; then
-  say "Error: email cannot be empty."
-  exit 1
-fi
-if [[ "$email" != *"@"* ]]; then
-  say "Warning: email usually contains @. Continuing anyway."
-fi
-
-git config --global user.name "$name"
-git config --global user.email "$email"
-
-say ""
-say "Configured global Git identity:"
+say "Global Git identity:"
 say "  user.name  = $(git config --global user.name)"
 say "  user.email = $(git config --global user.email)"
