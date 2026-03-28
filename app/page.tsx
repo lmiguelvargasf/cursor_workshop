@@ -1,8 +1,14 @@
 import { AboutMission } from "@/components/AboutMission";
-import { FinalCtaFooter } from "@/components/FinalCtaFooter";
+import { ContactSection } from "@/components/ContactSection";
+import { FaqSection } from "@/components/FaqSection";
+import { FinalCtaSection } from "@/components/FinalCtaSection";
 import { HeroSection } from "@/components/HeroSection";
+import { PortfolioSection } from "@/components/PortfolioSection";
+import { ProcessSection } from "@/components/ProcessSection";
+import { ServicesSection } from "@/components/ServicesSection";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { ValueGrid } from "@/components/ValueGrid";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 
 export default function Home() {
   return (
@@ -11,8 +17,14 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutMission />
-        <ValueGrid />
-        <FinalCtaFooter />
+        <ServicesSection />
+        <ProcessSection />
+        <TestimonialsSection />
+        <PortfolioSection />
+        <FaqSection />
+        <ContactSection />
+        <FinalCtaSection />
+        <SiteFooter />
       </main>
     </div>
   );
