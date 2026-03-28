@@ -2,18 +2,18 @@
 
 You are an expert Senior Frontend Engineer and UI/UX Designer. Your task is to build a high-conversion, modern, one-page landing page using **React (Next.js App Router)** and **Tailwind CSS**. 
 
-Below is the core information for the page. Please use this data to populate the text and links.
+Below is the core information for the page. Please use this data to populate the text and links. The CV is also included so that you have an idea of the projects that I did.
 
 ## Project Data
 
-- **Brand/Name:** [INSERT NAME / BUSINESS NAME]
-- **Type:** [e.g., Personal Portfolio / Tech Startup / Freelance Service]
-- **Main Goal:** [e.g., Generate leads / Showcase projects / Sell a service]
-- **Target Audience:** [e.g., Tech Founders / Local Businesses / Recruiters]
-- **Primary CTA:** [e.g., Book a Call / View My Work / Contact Me]
-- **Email:** [INSERT EMAIL]
-- **WhatsApp:** [INSERT WHATSAPP OR DELETE]
-- **Social Links:** [INSERT LINKEDIN / X / INSTAGRAM]
+- **Name:** Abdelrahman Tarek
+- **Type:** Freelance Service
+- **Main Goal:** Showcase projects and Sell a service
+- **Target Audience:** [Tech Founders / Local Businesses / Recruiters]
+- **Primary CTA:** [Contact Me]
+- **Email:** [abdu.jakal@gmail.com]
+- **WhatsApp:** [+593963209848]
+- **Social Links:** [https://www.linkedin.com/in/a-eljakal/]
 
 ---
 
