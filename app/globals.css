@@ -1,76 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --header-h: 3.5rem;
+  --section-y: clamp(3.5rem, 8vw, 6rem);
+  --section-y-tight: clamp(2.5rem, 5vw, 4rem);
+  --content-max: 80rem;
+  --prose-max: 40rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-h: 4rem;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-outfit);
-  --font-display: var(--font-syne);
-}
-
-.font-syne {
-  font-family: var(--font-syne), var(--font-outfit), sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), ui-sans-serif, sans-serif;
+  font-family: var(--font-sans);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .motion-hero-media,
-  .motion-hero-content,
-  .motion-hero-cta {
-    animation: none !important;
-  }
-}
-
-@keyframes hero-card-in {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes hero-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(1rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes hero-line-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.motion-hero-media {
-  animation: hero-card-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.motion-hero-content {
-  animation: hero-fade-up 0.75s ease-out 0.12s both;
-}
-
-.motion-hero-cta {
-  animation: hero-line-in 0.7s ease-out 0.35s both;
-}
